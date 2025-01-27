@@ -101,6 +101,47 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="P7NBiinHIemPsSOdsxHV-31" target="P7NBiinHIemPsSOdsxHV-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-31" value="Transportation" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="560" y="600" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-32" value="Transport-Type" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-33" value="Transport-ID" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="500" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-34" value="Delivery route" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="710" y="540" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.42;entryY=0.9;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P7NBiinHIemPsSOdsxHV-31" target="P7NBiinHIemPsSOdsxHV-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.28;entryY=0.025;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P7NBiinHIemPsSOdsxHV-31" target="P7NBiinHIemPsSOdsxHV-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-39" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=0.424;entryY=0.947;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="P7NBiinHIemPsSOdsxHV-38" target="P7NBiinHIemPsSOdsxHV-3">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="250" y="690" as="sourcePoint" />
+            <mxPoint x="200" y="820" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-40" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=0.424;entryY=0.947;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="P7NBiinHIemPsSOdsxHV-17" target="P7NBiinHIemPsSOdsxHV-38">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="180" y="820" as="sourcePoint" />
+            <mxPoint x="202" y="488" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="760" />
+              <mxPoint x="360" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P7NBiinHIemPsSOdsxHV-38" value="Items Shipped" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="630" width="80" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
