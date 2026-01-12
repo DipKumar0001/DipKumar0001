@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java OOP & Design Patterns - Learning Guide</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+            margin-top: 15px;
+        }
+
+        .badge-oop {
+            background: var(--secondary);
+            color: #fff;
+        }
+
+        .badge-pattern {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .badge-gui {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .badge-uml {
+            background: #9b59b6;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📚 Java OOP & Design Patterns</h1>
+        <p class="subtitle">Line-by-Line Code Explanations for the Booking System Project</p>
+
+        <div class="section">
+            <h2 class="section-title">🎯 Core Classes - Object-Oriented Programming</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="01_BookableItem.html">
+                        <div class="card-title">📦 BookableItem.java</div>
+                        <div class="card-desc">Abstract base class demonstrating encapsulation, abstraction, access
+                            modifiers, getters/setters, and abstract methods.</div>
+                        <span class="badge badge-oop">Abstract Class</span>
+                        <span class="badge badge-oop">Encapsulation</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="02_Book.html">
+                        <div class="card-title">📖 Book.java</div>
+                        <div class="card-desc">Concrete subclass showing inheritance, constructor chaining with super(),
+                            and method overriding with @Override.</div>
+                        <span class="badge badge-oop">Inheritance</span>
+                        <span class="badge badge-oop">Polymorphism</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="03_Vehicle.html">
+                        <div class="card-title">🚗 Vehicle.java</div>
+                        <div class="card-desc">Demonstrates polymorphism through method overriding, calling parent
+                            methods with super, and conditional logic.</div>
+                        <span class="badge badge-oop">Polymorphism</span>
+                        <span class="badge badge-oop">Method Overriding</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="04_HobbyKit.html">
+                        <div class="card-title">🎨 HobbyKit.java</div>
+                        <div class="card-desc">Shows composition relationship - HobbyKit contains Equipment objects.
+                            Demonstrates HAS-A relationships.</div>
+                        <span class="badge badge-oop">Composition</span>
+                        <span class="badge badge-oop">Collections</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="05_Equipment.html">
+                        <div class="card-title">🔧 Equipment.java</div>
+                        <div class="card-desc">Simple POJO class demonstrating basic encapsulation with private fields
+                            and public accessor methods.</div>
+                        <span class="badge badge-oop">Encapsulation</span>
+                        <span class="badge badge-oop">POJO</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="06_User.html">
+                        <div class="card-title">👤 User.java</div>
+                        <div class="card-desc">User management class showing instance variables, business logic methods,
+                            and status calculations.</div>
+                        <span class="badge badge-oop">Instance Methods</span>
+                        <span class="badge badge-oop">Business Logic</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🏗️ Design Patterns</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="07_ItemFactory.html">
+                        <div class="card-title">🏭 ItemFactory.java</div>
+                        <div class="card-desc">Factory Method Pattern - Encapsulates object creation logic for creating
+                            different types of BookableItem objects.</div>
+                        <span class="badge badge-pattern">Factory Pattern</span>
+                        <span class="badge badge-pattern">Creational</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="08_BookingSystem.html">
+                        <div class="card-title">📊 BookingSystem.java</div>
+                        <div class="card-desc">Singleton Pattern with lazy initialization. Also demonstrates Java
+                            Streams for functional programming.</div>
+                        <span class="badge badge-pattern">Singleton Pattern</span>
+                        <span class="badge badge-oop">Java Streams</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🖥️ GUI & Event-Driven Programming</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="09_BookingAppFX.html">
+                        <div class="card-title">🖼️ BookingAppFX.java</div>
+                        <div class="card-desc">JavaFX GUI application demonstrating event-driven programming, lambda
+                            expressions, CSS-style inline styling, and modern UI components.</div>
+                        <span class="badge badge-gui">JavaFX GUI</span>
+                        <span class="badge badge-gui">Event-Driven</span>
+                        <span class="badge badge-oop">Lambdas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">📐 UML & Visual Documentation</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <a href="10_ClassDiagram_Wireframe.html">
+                        <div class="card-title">📊 Class Diagrams & Wireframes</div>
+                        <div class="card-desc">UML class diagram explanation, relationship types, design pattern
+                            visualization, and GUI wireframe analysis.</div>
+                        <span class="badge badge-uml">UML</span>
+                        <span class="badge badge-uml">Class Diagram</span>
+                        <span class="badge badge-uml">Wireframe</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📚 Booking System Documentation | Sprint 3 | Author: Dipesh</p>
+            <p style="margin-top: 10px;">Object-Oriented Programming • Design Patterns • JavaFX</p>
+        </footer>
+    </div>
+</body>
+
+</html>

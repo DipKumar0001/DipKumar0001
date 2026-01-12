@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment.java - Encapsulation Basics</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>🔧 Equipment.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/Equipment.java</code> | Lines: 1-47</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>Equipment</code> is a simple <strong>POJO (Plain Old Java Object)</strong> representing a piece of
+            equipment in a HobbyKit. It demonstrates basic encapsulation with private fields and public getters/setters.
+        </div>
+
+        <h2>🎯 Key OOP Concepts</h2>
+
+        <div class="concept-box">
+            <h4>📘 Definition: POJO (Plain Old Java Object)</h4>
+            <p>A POJO is a simple Java object that:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Has private fields</li>
+                <li>Has public getters and setters</li>
+                <li>Has a constructor to initialize fields</li>
+                <li>May override <code>toString()</code></li>
+                <li>Doesn't extend special classes or implement framework interfaces</li>
+            </ul>
+        </div>
+
+        <h2>📝 Complete Code Breakdown</h2>
+
+        <h3>Lines 7-10: Private Fields (Encapsulation)</h3>
+        <pre><code><span class="keyword">public class</span> <span class="type">Equipment</span> {
+    <span class="keyword">private</span> <span class="type">String</span> name;
+    <span class="keyword">private</span> <span class="type">String</span> description;
+    <span class="keyword">private</span> <span class="type">String</span> category;
+}</code></pre>
+        <p>All fields are <code>private</code> - cannot be accessed directly from outside the class.</p>
+
+        <h3>Lines 19-23: Constructor</h3>
+        <pre><code><span class="keyword">public</span> <span class="method">Equipment</span>(<span class="type">String</span> name, <span class="type">String</span> description, <span class="type">String</span> category) {
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.description = description;
+    <span class="keyword">this</span>.category = category;
+}</code></pre>
+        <p>Constructor initializes all fields. The <code>this</code> keyword distinguishes instance variables from
+            parameters.</p>
+
+        <h3>Lines 25-35: Getter Methods</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">String</span> <span class="method">getName</span>() { <span class="keyword">return</span> name; }
+<span class="keyword">public</span> <span class="type">String</span> <span class="method">getDescription</span>() { <span class="keyword">return</span> description; }
+<span class="keyword">public</span> <span class="type">String</span> <span class="method">getCategory</span>() { <span class="keyword">return</span> category; }</code></pre>
+        <p><strong>Naming Convention:</strong> <code>getFieldName()</code> returns the field value.</p>
+
+        <h3>Lines 37-39: Setter Method</h3>
+        <pre><code><span class="keyword">public void</span> <span class="method">setDescription</span>(<span class="type">String</span> description) {
+    <span class="keyword">this</span>.description = description;
+}</code></pre>
+        <p><strong>Note:</strong> Only <code>description</code> has a setter - <code>name</code> and
+            <code>category</code> are read-only after construction.
+        </p>
+
+        <h3>Lines 45-48: toString() Override</h3>
+        <pre><code><span class="keyword">@Override</span>
+<span class="keyword">public</span> <span class="type">String</span> <span class="method">toString</span>() {
+    <span class="keyword">return</span> name + <span class="string">" ("</span> + category + <span class="string">"): "</span> + description;
+}</code></pre>
+        <p>Overrides <code>Object.toString()</code> to provide a meaningful string representation.</p>
+
+        <h2>📊 Encapsulation Summary</h2>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Getter</th>
+                <th>Setter</th>
+                <th>Access Level</th>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>Read-only</td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>Read/Write</td>
+            </tr>
+            <tr>
+                <td>category</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>Read-only</td>
+            </tr>
+        </table>
+
+        <footer>
+            <a href="04_HobbyKit.html">← Previous</a> | <a href="index.html">Index</a> | <a href="06_User.html">Next
+                →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

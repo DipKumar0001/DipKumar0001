@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HobbyKit.java - Composition & Aggregation</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>🎨 HobbyKit.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/HobbyKit.java</code> | Lines: 1-81</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>HobbyKit</code> represents a kit containing multiple pieces of equipment. This class demonstrates
+            <strong>Composition</strong> - a HobbyKit HAS-A list of Equipment objects.
+        </div>
+
+        <h2>🎯 Key OOP Concepts</h2>
+
+        <div class="concept-box">
+            <h4>📘 Composition vs Aggregation</h4>
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Ownership</th>
+                    <th>Lifecycle</th>
+                    <th>UML</th>
+                </tr>
+                <tr>
+                    <td><strong>Composition</strong></td>
+                    <td>Strong</td>
+                    <td>Part dies with whole</td>
+                    <td>◆</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggregation</strong></td>
+                    <td>Weak</td>
+                    <td>Part exists independently</td>
+                    <td>◇</td>
+                </tr>
+            </table>
+            <p style="margin-top: 10px;">HobbyKit uses <strong>Composition</strong> - Equipment objects are created
+                inside and owned by the HobbyKit.</p>
+        </div>
+
+        <h2>📝 Key Code Sections</h2>
+
+        <h3>Line 12: The Equipment List (Composition)</h3>
+        <pre><code><span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">Equipment</span>&gt; equipmentList;</code></pre>
+        <p><code>List&lt;Equipment&gt;</code> uses <strong>Generics</strong> for type safety - only Equipment objects
+            allowed.</p>
+
+        <h3>Constructor: Creating the List</h3>
+        <pre><code><span class="keyword">public</span> <span class="method">HobbyKit</span>(<span class="type">String</span> itemId, <span class="type">String</span> name) {
+    <span class="keyword">super</span>(itemId, name);
+    <span class="keyword">this</span>.equipmentList = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+}</code></pre>
+        <p>The list is created INSIDE the HobbyKit - this establishes Composition.</p>
+
+        <h3>Adding Equipment</h3>
+        <pre><code><span class="keyword">public void</span> <span class="method">addEquipment</span>(<span class="type">Equipment</span> equipment) {
+    <span class="keyword">this</span>.equipmentList.<span class="method">add</span>(equipment);
+}</code></pre>
+
+        <h3>Enhanced For Loop (For-Each)</h3>
+        <pre><code><span class="keyword">for</span> (<span class="type">Equipment</span> item : equipmentList) {
+    <span class="comment">// item is each Equipment in the list</span>
+    System.out.<span class="method">println</span>(item.<span class="method">getName</span>());
+}</code></pre>
+        <p>Cleaner syntax than traditional for loop for iterating collections.</p>
+
+        <h2>📊 Visualization</h2>
+        <pre style="background: var(--darker); text-align: center; font-size: 0.85rem;">
+┌────────────────────────────────────┐
+│           HobbyKit                 │
+│      "Photography Kit"             │
+├────────────────────────────────────┤
+│  equipmentList:                    │
+│  ┌──────────┐  ┌──────────┐       │
+│  │Equipment1│  │Equipment2│  ...  │
+│  │"Camera"  │  │"Tripod"  │       │
+│  └──────────┘  └──────────┘       │
+└────────────────────────────────────┘
+         ◆ COMPOSITION
+   (Equipment owned by HobbyKit)
+        </pre>
+
+        <footer>
+            <a href="03_Vehicle.html">← Previous</a> | <a href="index.html">Index</a> | <a href="05_Equipment.html">Next
+                →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book.java - Inheritance & Constructor Chaining</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            margin-bottom: 30px;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .line-num {
+            color: #666;
+            user-select: none;
+            margin-right: 15px;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .annotation {
+            color: #61afef;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">← Back to Index</a>
+        </nav>
+
+        <h1>📖 Book.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/Book.java</code> | Lines: 1-50</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>Book</code> is a <strong>concrete subclass</strong> of <code>BookableItem</code> that represents a
+            book in the library. It demonstrates <strong>inheritance</strong> and <strong>constructor chaining</strong>.
+        </div>
+
+        <h2>🎯 Key OOP Concepts</h2>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Inheritance</h4>
+            <p><strong>Inheritance</strong> is a mechanism where a new class (child/subclass) is derived from an
+                existing class (parent/superclass). The child class:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Inherits</strong> all public and protected fields and methods from the parent</li>
+                <li>Can <strong>add new</strong> fields and methods</li>
+                <li>Can <strong>override</strong> (replace) inherited methods</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>IS-A Relationship:</strong> A Book IS-A BookableItem (Book is a type of
+                BookableItem)</p>
+        </div>
+
+        <h2>📝 Line-by-Line Explanation</h2>
+
+        <h3>Line 5: Class Declaration with extends</h3>
+        <pre><code><span class="line-num"> 5</span><span class="keyword">public class</span> <span class="type">Book</span> <span class="keyword">extends</span> <span class="type">BookableItem</span> {</code></pre>
+
+        <p><strong>The <code>extends</code> keyword:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li>Establishes an inheritance relationship</li>
+            <li><code>Book</code> becomes a subclass of <code>BookableItem</code></li>
+            <li><code>Book</code> inherits all public/protected members from <code>BookableItem</code></li>
+            <li>Java supports <strong>single inheritance</strong> - a class can only extend ONE class</li>
+        </ul>
+
+        <h3>Lines 6-7: Additional Instance Variables</h3>
+        <pre><code><span class="line-num"> 6</span>    <span class="keyword">private</span> <span class="type">String</span> author;
+<span class="line-num"> 7</span>    <span class="keyword">private</span> <span class="type">String</span> isbn;</code></pre>
+
+        <p>These are <strong>Book-specific properties</strong> that don't exist in the parent class. The
+            <code>Book</code> class now has:
+        </p>
+        <ul style="margin-left: 20px;">
+            <li><strong>Inherited from BookableItem:</strong> itemId, name, isAvailable, currentHolder</li>
+            <li><strong>Its own:</strong> author, isbn</li>
+        </ul>
+
+        <h3>Lines 17-21: Constructor with super()</h3>
+        <pre><code><span class="line-num">17</span>    <span class="keyword">public</span> <span class="method">Book</span>(<span class="type">String</span> itemId, <span class="type">String</span> name, <span class="type">String</span> author, <span class="type">String</span> isbn) {
+<span class="line-num">18</span>        <span class="keyword">super</span>(itemId, name);
+<span class="line-num">19</span>        <span class="keyword">this</span>.author = author;
+<span class="line-num">20</span>        <span class="keyword">this</span>.isbn = isbn;
+<span class="line-num">21</span>    }</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Constructor Chaining (super)</h4>
+            <p>The <code><span class="keyword">super</span>()</code> keyword calls the parent class's constructor.
+                Rules:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><code>super()</code> MUST be the <strong>first statement</strong> in the constructor</li>
+                <li>If not explicitly called, Java automatically inserts <code>super()</code> (no-arg version)</li>
+                <li>If parent has no no-arg constructor, you MUST call super() with appropriate arguments</li>
+            </ul>
+        </div>
+
+        <p><strong>What happens when <code>new Book("B001", "Alchemist", "Paulo Coelho", "978...")</code> is
+                called:</strong></p>
+        <ol style="margin-left: 20px;">
+            <li><code>Book</code> constructor is invoked</li>
+            <li><code>super(itemId, name)</code> calls <code>BookableItem</code> constructor</li>
+            <li><code>BookableItem</code> constructor sets itemId, name, isAvailable, currentHolder</li>
+            <li>Control returns to <code>Book</code> constructor</li>
+            <li>author and isbn are set</li>
+        </ol>
+
+        <h3>Lines 23-29: Getter Methods</h3>
+        <pre><code><span class="line-num">23</span>    <span class="keyword">public</span> <span class="type">String</span> <span class="method">getAuthor</span>() {
+<span class="line-num">24</span>        <span class="keyword">return</span> author;
+<span class="line-num">25</span>    }
+<span class="line-num">26</span>
+<span class="line-num">27</span>    <span class="keyword">public</span> <span class="type">String</span> <span class="method">getIsbn</span>() {
+<span class="line-num">28</span>        <span class="keyword">return</span> isbn;
+<span class="line-num">29</span>    }</code></pre>
+
+        <p>Standard getter methods for the Book-specific properties. Note that we don't need getters for inherited
+            properties (getItemId(), getName()) because they're already defined in the parent class.</p>
+
+        <h3>Lines 40-48: Method Overriding (printDetails)</h3>
+        <pre><code><span class="line-num">40</span>    <span class="annotation">@Override</span>
+<span class="line-num">41</span>    <span class="keyword">public void</span> <span class="method">printDetails</span>() {
+<span class="line-num">42</span>        System.out.<span class="method">println</span>(<span class="string">"--- 📚 Book ---"</span>);
+<span class="line-num">43</span>        System.out.<span class="method">println</span>(<span class="string">"  Title: "</span> + <span class="method">getName</span>());
+<span class="line-num">44</span>        System.out.<span class="method">println</span>(<span class="string">"  Author: "</span> + <span class="keyword">this</span>.author);
+<span class="line-num">45</span>        System.out.<span class="method">println</span>(<span class="string">"  ISBN: "</span> + <span class="keyword">this</span>.isbn);
+<span class="line-num">46</span>        System.out.<span class="method">println</span>(<span class="string">"  ID: "</span> + <span class="method">getItemId</span>());
+<span class="line-num">47</span>        System.out.<span class="method">println</span>(<span class="string">"  Status: "</span> + (<span class="method">isAvailable</span>() ? <span class="string">"Available"</span> : <span class="string">"On Loan"</span>));
+<span class="line-num">48</span>    }</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Method Overriding</h4>
+            <p><strong>Method overriding</strong> occurs when a subclass provides its own implementation of a method
+                that is already defined in its parent class. Rules:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Same method signature (name + parameters)</li>
+                <li>Same or covariant return type</li>
+                <li>Access modifier cannot be more restrictive</li>
+                <li>Use <code>@Override</code> annotation (optional but recommended)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>This is POLYMORPHISM!</strong> Different classes respond differently to
+                the same method call.</p>
+        </div>
+
+        <p><strong>Key observations:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li><code>@Override</code> tells compiler to check the parent has this method</li>
+            <li><code>getName()</code>, <code>getItemId()</code>, <code>isAvailable()</code> are inherited from parent
+            </li>
+            <li>The implementation is Book-specific, printing author and ISBN</li>
+        </ul>
+
+        <h3>Lines 36-38: The getCitation() Method</h3>
+        <pre><code><span class="line-num">36</span>    <span class="keyword">public</span> <span class="type">String</span> <span class="method">getCitation</span>() {
+<span class="line-num">37</span>        <span class="keyword">return</span> author + <span class="string">". "</span> + <span class="method">getName</span>() + <span class="string">". ISBN: "</span> + isbn;
+<span class="line-num">38</span>    }</code></pre>
+
+        <p>This is a <strong>new method</strong> that only exists in the <code>Book</code> class. It uses:</p>
+        <ul style="margin-left: 20px;">
+            <li>Its own field <code>author</code></li>
+            <li>Inherited method <code>getName()</code> from parent</li>
+            <li>Its own field <code>isbn</code></li>
+        </ul>
+
+        <h2>📊 Inheritance Hierarchy Visualization</h2>
+        <pre style="background: var(--darker); text-align: center;">
+┌─────────────────────┐
+│    BookableItem     │  ← Abstract Parent
+│  (abstract class)   │
+├─────────────────────┤
+│ - itemId: String    │
+│ - name: String      │
+│ - isAvailable: bool │
+│ - currentHolder     │
+├─────────────────────┤
+│ + bookItem()        │
+│ + returnItem()      │
+│ + printDetails()*   │  ← abstract
+└──────────┬──────────┘
+           │ extends
+           ▼
+┌─────────────────────┐
+│        Book         │  ← Concrete Child
+├─────────────────────┤
+│ - author: String    │  ← Book-specific
+│ - isbn: String      │  ← Book-specific
+├─────────────────────┤
+│ + getAuthor()       │
+│ + getIsbn()         │
+│ + getCitation()     │
+│ + printDetails()    │  ← Override
+└─────────────────────┘
+        </pre>
+
+        <footer>
+            <a href="01_BookableItem.html">← Previous: BookableItem.java</a> |
+            <a href="index.html">Index</a> |
+            <a href="03_Vehicle.html">Next: Vehicle.java →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

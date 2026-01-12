@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle.java - Polymorphism & Method Overriding</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            margin-bottom: 30px;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .line-num {
+            color: #666;
+            user-select: none;
+            margin-right: 15px;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .annotation {
+            color: #61afef;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">← Back to Index</a>
+        </nav>
+
+        <h1>🚗 Vehicle.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/Vehicle.java</code> | Lines: 1-76</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>Vehicle</code> is a subclass of <code>BookableItem</code> that represents a vehicle for rent. It
+            demonstrates <strong>advanced polymorphism</strong> by overriding the <code>canBeBookedBy()</code> method to
+            add custom validation.
+        </div>
+
+        <h2>🎯 Key OOP Concepts</h2>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Polymorphism</h4>
+            <p><strong>Polymorphism</strong> (Greek: "many forms") allows objects of different classes to be treated
+                through the same interface. There are two types:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Compile-time (Method Overloading):</strong> Same method name, different parameters</li>
+                <li><strong>Runtime (Method Overriding):</strong> Subclass provides different implementation of parent
+                    method</li>
+            </ul>
+            <p style="margin-top: 10px;"><code>Vehicle</code> demonstrates <strong>runtime polymorphism</strong> - same
+                method call (<code>canBeBookedBy()</code>) behaves differently for Vehicle vs. other BookableItems.</p>
+        </div>
+
+        <h2>📝 Line-by-Line Explanation</h2>
+
+        <h3>Lines 8-11: Class and Properties</h3>
+        <pre><code><span class="line-num"> 8</span><span class="keyword">public class</span> <span class="type">Vehicle</span> <span class="keyword">extends</span> <span class="type">BookableItem</span> {
+<span class="line-num"> 9</span>    <span class="keyword">private</span> <span class="type">String</span> make;
+<span class="line-num">10</span>    <span class="keyword">private</span> <span class="type">String</span> model;
+<span class="line-num">11</span>    <span class="keyword">private</span> <span class="type">String</span> licensePlate;</code></pre>
+
+        <p><strong>Vehicle-specific properties:</strong></p>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><code>make</code></td>
+                <td>Vehicle manufacturer</td>
+                <td>"Honda", "Toyota"</td>
+            </tr>
+            <tr>
+                <td><code>model</code></td>
+                <td>Vehicle model name</td>
+                <td>"Civic", "Camry"</td>
+            </tr>
+            <tr>
+                <td><code>licensePlate</code></td>
+                <td>Registration number</td>
+                <td>"CV12 3AB"</td>
+            </tr>
+        </table>
+
+        <h3>Lines 22-27: Constructor</h3>
+        <pre><code><span class="line-num">22</span>    <span class="keyword">public</span> <span class="method">Vehicle</span>(<span class="type">String</span> itemId, <span class="type">String</span> name, <span class="type">String</span> make, <span class="type">String</span> model, <span class="type">String</span> licensePlate) {
+<span class="line-num">23</span>        <span class="keyword">super</span>(itemId, name);
+<span class="line-num">24</span>        <span class="keyword">this</span>.make = make;
+<span class="line-num">25</span>        <span class="keyword">this</span>.model = model;
+<span class="line-num">26</span>        <span class="keyword">this</span>.licensePlate = licensePlate;
+<span class="line-num">27</span>    }</code></pre>
+
+        <p>Constructor takes 5 parameters:</p>
+        <ul style="margin-left: 20px;">
+            <li>First 2 (<code>itemId</code>, <code>name</code>) are passed to parent via <code>super()</code></li>
+            <li>Last 3 (<code>make</code>, <code>model</code>, <code>licensePlate</code>) are Vehicle-specific</li>
+        </ul>
+
+        <h3>Lines 54-67: Polymorphic Method Override ⭐</h3>
+        <pre><code><span class="line-num">54</span>    <span class="annotation">@Override</span>
+<span class="line-num">55</span>    <span class="keyword">public boolean</span> <span class="method">canBeBookedBy</span>(<span class="type">User</span> user) {
+<span class="line-num">56</span>        <span class="keyword">boolean</span> basicCheck = <span class="keyword">super</span>.<span class="method">canBeBookedBy</span>(user);
+<span class="line-num">57</span>        <span class="keyword">if</span> (!basicCheck)
+<span class="line-num">58</span>            <span class="keyword">return false</span>;
+<span class="line-num">59</span>
+<span class="line-num">60</span>        <span class="comment">// Premium item requires 5 points</span>
+<span class="line-num">61</span>        <span class="keyword">if</span> (user.<span class="method">getLoyaltyPoints</span>() < 5) {
+<span class="line-num">62</span>            System.out.<span class="method">println</span>(<span class="string">"Refused: "</span> + user.<span class="method">getFullName</span>() + <span class="string">" needs 5+ points..."</span>);
+<span class="line-num">63</span>            <span class="keyword">return false</span>;
+<span class="line-num">64</span>        }
+<span class="line-num">65</span>        <span class="keyword">return true</span>;
+<span class="line-num">66</span>    }</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Calling Parent Method with super.methodName()</h4>
+            <p>When overriding a method, you can still call the parent's implementation using
+                <code>super.methodName()</code>. This allows:
+            </p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Extension:</strong> Add new behavior while keeping the original</li>
+                <li><strong>Reuse:</strong> Don't repeat code from parent</li>
+            </ul>
+        </div>
+
+        <p><strong>How this method works:</strong></p>
+        <ol style="margin-left: 20px;">
+            <li><code>super.canBeBookedBy(user)</code> calls parent's version (checks availability and user != null)
+            </li>
+            <li>If basic check fails, return false immediately</li>
+            <li>Additional Vehicle-specific check: user must have 5+ loyalty points</li>
+            <li>If points check fails, print message and return false</li>
+            <li>All checks passed: return true</li>
+        </ol>
+
+        <div class="warning-box">
+            <strong>⚠️ Polymorphism in Action:</strong><br>
+            When you call <code>item.canBeBookedBy(user)</code> on a <code>BookableItem</code> reference that actually
+            points to a <code>Vehicle</code> object, Java calls the Vehicle's version!
+            <pre><code><span class="type">BookableItem</span> item = <span class="keyword">new</span> <span class="type">Vehicle</span>(<span class="string">"V001"</span>, <span class="string">"Honda Civic"</span>, ...);
+item.<span class="method">canBeBookedBy</span>(user);  <span class="comment">// Calls Vehicle's version!</span></code></pre>
+        </div>
+
+        <h3>Lines 69-77: printDetails() Override</h3>
+        <pre><code><span class="line-num">69</span>    <span class="annotation">@Override</span>
+<span class="line-num">70</span>    <span class="keyword">public void</span> <span class="method">printDetails</span>() {
+<span class="line-num">71</span>        System.out.<span class="method">println</span>(<span class="string">"--- 🚗 Vehicle ---"</span>);
+<span class="line-num">72</span>        System.out.<span class="method">println</span>(<span class="string">"  Name: "</span> + <span class="method">getName</span>());
+<span class="line-num">73</span>        System.out.<span class="method">println</span>(<span class="string">"  Make/Model: "</span> + <span class="keyword">this</span>.make + <span class="string">" "</span> + <span class="keyword">this</span>.model);
+<span class="line-num">74</span>        System.out.<span class="method">println</span>(<span class="string">"  License: "</span> + <span class="keyword">this</span>.licensePlate);
+<span class="line-num">75</span>        System.out.<span class="method">println</span>(<span class="string">"  ID: "</span> + <span class="method">getItemId</span>());
+<span class="line-num">76</span>        System.out.<span class="method">println</span>(<span class="string">"  Status: "</span> + (<span class="method">isAvailable</span>() ? <span class="string">"Available"</span> : <span class="string">"On Loan"</span>));
+<span class="line-num">77</span>    }</code></pre>
+
+        <p>This fulfills the contract from the abstract parent class. Note the Vehicle-specific output format showing
+            make, model, and license plate.</p>
+
+        <h2>📊 Polymorphism Comparison</h2>
+
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>canBeBookedBy() Implementation</th>
+            </tr>
+            <tr>
+                <td><code>BookableItem</code> (parent)</td>
+                <td>Checks: isAvailable && user != null && loyaltyPoints >= 0</td>
+            </tr>
+            <tr>
+                <td><code>Vehicle</code> (child)</td>
+                <td>Parent checks + requires loyaltyPoints >= 5</td>
+            </tr>
+            <tr>
+                <td><code>Book</code> (child)</td>
+                <td>Uses parent's implementation (no override)</td>
+            </tr>
+        </table>
+
+        <h2>💡 Why This Matters</h2>
+        <p>Polymorphism allows the <code>BookingSystem</code> and <code>BookingAppSwing</code> to work with all items
+            uniformly:</p>
+        <pre><code><span class="comment">// This works for ANY BookableItem subclass!</span>
+<span class="keyword">for</span> (<span class="type">BookableItem</span> item : allItems) {
+    <span class="keyword">if</span> (item.<span class="method">canBeBookedBy</span>(user)) {  <span class="comment">// Called polymorphically</span>
+        item.<span class="method">bookItem</span>(user);
+    }
+}</code></pre>
+
+        <footer>
+            <a href="02_Book.html">← Previous: Book.java</a> |
+            <a href="index.html">Index</a> |
+            <a href="04_HobbyKit.html">Next: HobbyKit.java →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

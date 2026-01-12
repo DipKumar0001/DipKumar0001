@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User.java - Instance Variables & Business Logic</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>👤 User.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/User.java</code> | Lines: 1-87</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>User</code> represents a user in the booking system with loyalty points and membership status. It
+            demonstrates business logic methods that compute values based on object state.
+        </div>
+
+        <h2>📝 Key Code Sections</h2>
+
+        <h3>Lines 10-15: Instance Variables</h3>
+        <pre><code><span class="keyword">public class</span> <span class="type">User</span> {
+    <span class="keyword">private</span> <span class="type">String</span> userId;
+    <span class="keyword">private</span> <span class="type">String</span> firstName;
+    <span class="keyword">private</span> <span class="type">String</span> lastName;
+    <span class="keyword">private</span> <span class="type">LocalDate</span> registrationDate;
+    <span class="keyword">private int</span> loyaltyPoints = 0;  <span class="comment">// Default value</span>
+}</code></pre>
+        <p><strong>Note:</strong> <code>loyaltyPoints</code> has a default value of 0, set at declaration time.</p>
+
+        <h3>Lines 24-29: Constructor</h3>
+        <pre><code><span class="keyword">public</span> <span class="method">User</span>(<span class="type">String</span> userId, <span class="type">String</span> firstName, <span class="type">String</span> lastName) {
+    <span class="keyword">this</span>.userId = userId;
+    <span class="keyword">this</span>.firstName = firstName;
+    <span class="keyword">this</span>.lastName = lastName;
+    <span class="keyword">this</span>.registrationDate = <span class="type">LocalDate</span>.<span class="method">now</span>();
+}</code></pre>
+        <p><code>LocalDate.now()</code> captures the current date automatically at user creation.</p>
+
+        <h3>Lines 45-49: Business Logic - getUserStatus()</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">String</span> <span class="method">getUserStatus</span>() {
+    <span class="keyword">if</span> (loyaltyPoints >= 50) <span class="keyword">return</span> <span class="string">"Gold Member"</span>;
+    <span class="keyword">if</span> (loyaltyPoints >= 20) <span class="keyword">return</span> <span class="string">"Silver Member"</span>;
+    <span class="keyword">return</span> <span class="string">"Standard Member"</span>;
+}</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Business Logic Methods</h4>
+            <p>Methods that compute values based on object state rather than just returning a field. Here,
+                <code>getUserStatus()</code> determines membership tier dynamically.
+            </p>
+        </div>
+
+        <h3>Lines 64-66: Computed Property - getFullName()</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">String</span> <span class="method">getFullName</span>() {
+    <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;
+}</code></pre>
+        <p>Combines two fields into one return value - no separate <code>fullName</code> field needed.</p>
+
+        <h3>Lines 77-83: Mutator Methods</h3>
+        <pre><code><span class="keyword">public void</span> <span class="method">addLoyaltyPoints</span>(<span class="keyword">int</span> points) {
+    <span class="keyword">this</span>.loyaltyPoints += points;
+}
+
+<span class="keyword">public void</span> <span class="method">setLoyaltyPoints</span>(<span class="keyword">int</span> points) {
+    <span class="keyword">this</span>.loyaltyPoints = points;
+}</code></pre>
+        <p><code>addLoyaltyPoints()</code> modifies the existing value; <code>setLoyaltyPoints()</code> replaces it
+            entirely.</p>
+
+        <h2>📊 Membership Status Tiers</h2>
+        <table>
+            <tr>
+                <th>Points</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>0-19</td>
+                <td>Standard Member</td>
+            </tr>
+            <tr>
+                <td>20-49</td>
+                <td>Silver Member</td>
+            </tr>
+            <tr>
+                <td>50+</td>
+                <td>Gold Member</td>
+            </tr>
+        </table>
+
+        <footer>
+            <a href="05_Equipment.html">← Previous</a> | <a href="index.html">Index</a> | <a
+                href="07_ItemFactory.html">Next →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

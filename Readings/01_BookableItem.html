@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookableItem.java - Abstract Class Explained</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            margin-bottom: 30px;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .line-num {
+            color: #666;
+            user-select: none;
+            margin-right: 15px;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .annotation {
+            color: #61afef;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .highlight {
+            background: rgba(243, 156, 18, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html">← Back to Index</a>
+        </nav>
+
+        <h1>📦 BookableItem.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/BookableItem.java</code> | Lines: 1-124</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>BookableItem</code> is an <strong>abstract base class</strong> that represents any item that can be
+            booked in the library system. It defines common properties and behaviors shared by all bookable items
+            (Books, Vehicles, HobbyKits).
+        </div>
+
+        <h2>🎯 Key OOP Concepts in This Class</h2>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Abstract Class</h4>
+            <p>An <strong>abstract class</strong> is a class that cannot be instantiated directly. It serves as a
+                blueprint for other classes (subclasses) to inherit from. Abstract classes can contain:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Abstract methods</strong> - methods without implementation that subclasses MUST override
+                </li>
+                <li><strong>Concrete methods</strong> - regular methods with implementation that subclasses inherit</li>
+                <li><strong>Instance variables</strong> - fields that subclasses inherit</li>
+            </ul>
+        </div>
+
+        <h2>📝 Line-by-Line Explanation</h2>
+
+        <h3>Lines 1-4: JavaDoc Comment</h3>
+        <pre><code><span class="line-num"> 1</span><span class="comment">/**</span>
+<span class="line-num"> 2</span><span class="comment"> * Abstract base class for all bookable items in the system.</span>
+<span class="line-num"> 3</span><span class="comment"> * Provides common booking functionality and properties.</span>
+<span class="line-num"> 4</span><span class="comment"> */</span></code></pre>
+        <p><strong>Explanation:</strong> JavaDoc comments (<code>/** ... */</code>) provide documentation that can be
+            extracted by tools. They describe the purpose of the class.</p>
+
+        <h3>Line 5: Class Declaration</h3>
+        <pre><code><span class="line-num"> 5</span><span class="keyword">public abstract class</span> <span class="type">BookableItem</span> {</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Access Modifiers Explained</h4>
+            <table>
+                <tr>
+                    <th>Modifier</th>
+                    <th>Class</th>
+                    <th>Package</th>
+                    <th>Subclass</th>
+                    <th>World</th>
+                </tr>
+                <tr>
+                    <td><code class="highlight">public</code></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td><code>protected</code></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                </tr>
+                <tr>
+                    <td><code>(default)</code></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                </tr>
+                <tr>
+                    <td><code>private</code></td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                </tr>
+            </table>
+        </div>
+
+        <p><strong>Keywords used:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li><code class="keyword">public</code> - This class is accessible from any other class</li>
+            <li><code class="keyword">abstract</code> - This class cannot be instantiated with
+                <code>new BookableItem()</code>
+            </li>
+            <li><code class="keyword">class</code> - Declares a class (blueprint for objects)</li>
+        </ul>
+
+        <h3>Lines 6-9: Instance Variables (Attributes/Properties)</h3>
+        <pre><code><span class="line-num"> 6</span>    <span class="keyword">private</span> <span class="type">String</span> itemId;
+<span class="line-num"> 7</span>    <span class="keyword">private</span> <span class="type">String</span> name;
+<span class="line-num"> 8</span>    <span class="keyword">private</span> <span class="type">boolean</span> isAvailable;
+<span class="line-num"> 9</span>    <span class="keyword">private</span> <span class="type">User</span> currentHolder;</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Encapsulation</h4>
+            <p><strong>Encapsulation</strong> is bundling data (attributes) and methods that operate on that data within
+                a single unit (class), while restricting direct access to some components. This is achieved by:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Making attributes <code class="keyword">private</code> (hidden from outside)</li>
+                <li>Providing <code class="keyword">public</code> getter/setter methods to access/modify them</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Why?</strong> Protects data integrity, allows validation, and hides
+                implementation details.</p>
+        </div>
+
+        <table>
+            <tr>
+                <th>Variable</th>
+                <th>Type</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>itemId</code></td>
+                <td>String</td>
+                <td>Unique identifier for the item (e.g., "B001")</td>
+            </tr>
+            <tr>
+                <td><code>name</code></td>
+                <td>String</td>
+                <td>Display name of the item</td>
+            </tr>
+            <tr>
+                <td><code>isAvailable</code></td>
+                <td>boolean</td>
+                <td>Whether the item can be booked (true = available)</td>
+            </tr>
+            <tr>
+                <td><code>currentHolder</code></td>
+                <td>User</td>
+                <td>Reference to the User who currently has this item (or null if available)</td>
+            </tr>
+        </table>
+
+        <h3>Lines 11-22: Constructor</h3>
+        <pre><code><span class="line-num">11</span>    <span class="comment">/**</span>
+<span class="line-num">12</span>    <span class="comment"> * Creates a new bookable item.</span>
+<span class="line-num">13</span>    <span class="comment"> * </span>
+<span class="line-num">14</span>    <span class="comment"> * @param itemId Unique identifier for the item</span>
+<span class="line-num">15</span>    <span class="comment"> * @param name   Display name of the item</span>
+<span class="line-num">16</span>    <span class="comment"> */</span>
+<span class="line-num">17</span>    <span class="keyword">public</span> <span class="method">BookableItem</span>(<span class="type">String</span> itemId, <span class="type">String</span> name) {
+<span class="line-num">18</span>        <span class="keyword">this</span>.itemId = itemId;
+<span class="line-num">19</span>        <span class="keyword">this</span>.name = name;
+<span class="line-num">20</span>        <span class="keyword">this</span>.isAvailable = <span class="keyword">true</span>;
+<span class="line-num">21</span>        <span class="keyword">this</span>.currentHolder = <span class="keyword">null</span>;
+<span class="line-num">22</span>    }</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Constructor</h4>
+            <p>A <strong>constructor</strong> is a special method that:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Has the <strong>same name as the class</strong></li>
+                <li>Has <strong>no return type</strong> (not even void)</li>
+                <li>Is called automatically when an object is created with <code>new</code></li>
+                <li>Initializes the object's state (sets initial values for attributes)</li>
+            </ul>
+        </div>
+
+        <p><strong>The <code>this</code> keyword:</strong> Refers to the current object instance. Used to distinguish
+            between instance variables and parameters with the same name.</p>
+
+        <h3>Lines 24-28: Abstract Method</h3>
+        <pre><code><span class="line-num">24</span>    <span class="comment">/**</span>
+<span class="line-num">25</span>    <span class="comment"> * Abstract method to print item-specific details.</span>
+<span class="line-num">26</span>    <span class="comment"> * Each subclass must implement this method.</span>
+<span class="line-num">27</span>    <span class="comment"> */</span>
+<span class="line-num">28</span>    <span class="keyword">public abstract void</span> <span class="method">printDetails</span>();</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Abstract Method</h4>
+            <p>An <strong>abstract method</strong> is declared with the <code>abstract</code> keyword and has no body
+                (no implementation). It ends with a semicolon instead of curly braces.</p>
+            <p style="margin-top: 10px;"><strong>Contract:</strong> Any concrete (non-abstract) subclass MUST provide an
+                implementation for all abstract methods.</p>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> If a subclass doesn't implement all abstract methods from its parent, it must
+            also be declared as abstract.
+        </div>
+
+        <h3>Lines 30-53: The bookItem() Method</h3>
+        <pre><code><span class="line-num">37</span>    <span class="keyword">public boolean</span> <span class="method">bookItem</span>(<span class="type">User</span> user) {
+<span class="line-num">38</span>        <span class="keyword">if</span> (isAvailable) {
+<span class="line-num">39</span>            <span class="keyword">this</span>.isAvailable = <span class="keyword">false</span>;
+<span class="line-num">40</span>            <span class="keyword">this</span>.currentHolder = user;
+<span class="line-num">41</span>            System.out.<span class="method">println</span>(<span class="string">"SUCCESS: '"</span> + <span class="keyword">this</span>.name + <span class="string">"' has been booked by "</span> + user.<span class="method">getFullName</span>() + <span class="string">"."</span>);
+<span class="line-num">42</span>
+<span class="line-num">43</span>            <span class="comment">// Add loyalty points when booking</span>
+<span class="line-num">44</span>            user.<span class="method">addLoyaltyPoints</span>(5);
+<span class="line-num">45</span>            System.out.<span class="method">println</span>(user.<span class="method">getFullName</span>() + <span class="string">" earned 5 loyalty points! Total: "</span> + user.<span class="method">getLoyaltyPoints</span>());
+<span class="line-num">46</span>
+<span class="line-num">47</span>            <span class="keyword">return true</span>;
+<span class="line-num">48</span>        } <span class="keyword">else</span> {
+<span class="line-num">49</span>            System.out.<span class="method">println</span>(<span class="string">"ERROR: '"</span> + <span class="keyword">this</span>.name + <span class="string">"' is already on loan..."</span>);
+<span class="line-num">52</span>            <span class="keyword">return false</span>;
+<span class="line-num">53</span>        }
+<span class="line-num">54</span>    }</code></pre>
+
+        <p><strong>This method demonstrates:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li><strong>Conditional logic</strong> - Using if/else to check availability</li>
+            <li><strong>State modification</strong> - Changing isAvailable and currentHolder</li>
+            <li><strong>Object interaction</strong> - Calling methods on the User object</li>
+            <li><strong>Return values</strong> - Returning true for success, false for failure</li>
+        </ul>
+
+        <h3>Lines 92-107: Getter Methods</h3>
+        <pre><code><span class="line-num">93</span>    <span class="keyword">public</span> <span class="type">User</span> <span class="method">getCurrentHolder</span>() {
+<span class="line-num">94</span>        <span class="keyword">return</span> currentHolder;
+<span class="line-num">95</span>    }
+<span class="line-num">96</span>
+<span class="line-num">97</span>    <span class="keyword">public</span> <span class="type">String</span> <span class="method">getItemId</span>() {
+<span class="line-num">98</span>        <span class="keyword">return</span> itemId;
+<span class="line-num">99</span>    }
+<span class="line-num">100</span>
+<span class="line-num">101</span>   <span class="keyword">public</span> <span class="type">String</span> <span class="method">getName</span>() {
+<span class="line-num">102</span>       <span class="keyword">return</span> name;
+<span class="line-num">103</span>   }
+<span class="line-num">104</span>
+<span class="line-num">105</span>   <span class="keyword">public boolean</span> <span class="method">isAvailable</span>() {
+<span class="line-num">106</span>       <span class="keyword">return</span> isAvailable;
+<span class="line-num">107</span>   }</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Definition: Getters and Setters</h4>
+            <p><strong>Getters</strong> (accessors) and <strong>Setters</strong> (mutators) are methods that provide
+                controlled access to private fields:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Getter:</strong> Returns the value of a private field. Convention:
+                    <code>getFieldName()</code> or <code>isFieldName()</code> for booleans
+                </li>
+                <li><strong>Setter:</strong> Sets/modifies the value of a private field. Convention:
+                    <code>setFieldName(value)</code>
+                </li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Benefits:</strong> Allows validation before setting, read-only access
+                (no setter), lazy loading, logging changes, etc.</p>
+        </div>
+
+        <h3>Lines 118-122: toString() Override</h3>
+        <pre><code><span class="line-num">118</span>   <span class="annotation">@Override</span>
+<span class="line-num">119</span>   <span class="keyword">public</span> <span class="type">String</span> <span class="method">toString</span>() {
+<span class="line-num">120</span>       <span class="type">String</span> status = isAvailable ? <span class="string">"✓ Available"</span> : <span class="string">"✗ Booked"</span>;
+<span class="line-num">121</span>       <span class="keyword">return</span> <span class="type">String</span>.<span class="method">format</span>(<span class="string">"[%s] %s - %s - %s"</span>, itemId, name, <span class="method">getItemType</span>(), status);
+<span class="line-num">122</span>   }</code></pre>
+
+        <p><strong>The <code>@Override</code> annotation:</strong> Indicates this method overrides a method from a
+            parent class (Object). The compiler will check that the parent actually has this method.</p>
+
+        <p><strong>Ternary operator:</strong> <code>condition ? valueIfTrue : valueIfFalse</code> - A shorthand for
+            if/else that returns a value.</p>
+
+        <h2>📊 Class Relationship Summary</h2>
+        <table>
+            <tr>
+                <th>Relationship</th>
+                <th>With</th>
+                <th>Type</th>
+            </tr>
+            <tr>
+                <td>BookableItem → User</td>
+                <td>currentHolder field</td>
+                <td>Association (uses)</td>
+            </tr>
+            <tr>
+                <td>Book → BookableItem</td>
+                <td>extends</td>
+                <td>Inheritance (IS-A)</td>
+            </tr>
+            <tr>
+                <td>Vehicle → BookableItem</td>
+                <td>extends</td>
+                <td>Inheritance (IS-A)</td>
+            </tr>
+            <tr>
+                <td>HobbyKit → BookableItem</td>
+                <td>extends</td>
+                <td>Inheritance (IS-A)</td>
+            </tr>
+        </table>
+
+        <footer>
+            <a href="index.html">← Back to Index</a> |
+            <a href="02_Book.html">Next: Book.java →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

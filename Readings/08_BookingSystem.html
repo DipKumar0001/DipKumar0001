@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookingSystem.java - Singleton Pattern & Java Streams</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .pattern-box {
+            background: rgba(243, 156, 18, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .pattern-box h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>📊 BookingSystem.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/BookingSystem.java</code> | Lines: 1-180</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>BookingSystem</code> is the central management system implementing the <strong>Singleton Design
+                Pattern</strong>. It also demonstrates <strong>Java Streams</strong> for functional programming.
+        </div>
+
+        <h2>🎯 Design Pattern: Singleton</h2>
+
+        <div class="pattern-box">
+            <h4>📘 Singleton Pattern</h4>
+            <p><strong>Category:</strong> Creational Design Pattern</p>
+            <p><strong>Intent:</strong> Ensure a class has only ONE instance and provide a global access point to it.
+            </p>
+            <p style="margin-top: 10px;"><strong>Implementation Requirements:</strong></p>
+            <ul style="margin-left: 20px;">
+                <li>Private static instance variable</li>
+                <li>Private constructor (prevents external instantiation)</li>
+                <li>Public static getInstance() method</li>
+            </ul>
+        </div>
+
+        <h2>📝 Singleton Implementation</h2>
+
+        <h3>Line 14: Private Static Instance</h3>
+        <pre><code><span class="keyword">private static</span> <span class="type">BookingSystem</span> instance;</code></pre>
+        <p><code>static</code> means there's only ONE <code>instance</code> variable shared across all references.</p>
+
+        <h3>Lines 22-25: Private Constructor</h3>
+        <pre><code><span class="keyword">private</span> <span class="method">BookingSystem</span>() {
+    items = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+    users = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();
+}</code></pre>
+        <p>The <code>private</code> constructor prevents using <code>new BookingSystem()</code> from outside.</p>
+
+        <h3>Lines 33-38: getInstance() - Lazy Initialization</h3>
+        <pre><code><span class="keyword">public static</span> <span class="type">BookingSystem</span> <span class="method">getInstance</span>() {
+    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {
+        instance = <span class="keyword">new</span> <span class="type">BookingSystem</span>();
+    }
+    <span class="keyword">return</span> instance;
+}</code></pre>
+        <p><strong>Lazy Initialization:</strong> Instance is created only when first requested, not at class loading
+            time.</p>
+
+        <h2>🌊 Java Streams (Functional Programming)</h2>
+
+        <div class="concept-box">
+            <h4>📘 What are Java Streams?</h4>
+            <p>Streams provide a functional approach to processing collections:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><code>stream()</code> - creates a stream from a collection</li>
+                <li><code>filter()</code> - keeps elements matching a condition</li>
+                <li><code>map()</code> - transforms each element</li>
+                <li><code>collect()</code> - gathers results into a collection</li>
+                <li><code>findFirst()</code> - returns first matching element</li>
+            </ul>
+        </div>
+
+        <h3>findUserById() with Streams</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">User</span> <span class="method">findUserById</span>(<span class="type">String</span> userId) {
+    <span class="keyword">return</span> users.<span class="method">stream</span>()
+            .<span class="method">filter</span>(user -> user.<span class="method">getUserId</span>().<span class="method">equals</span>(userId))
+            .<span class="method">findFirst</span>()
+            .<span class="method">orElse</span>(<span class="keyword">null</span>);
+}</code></pre>
+        <p><strong>Lambda Expression:</strong> <code>user -> user.getUserId().equals(userId)</code> is a function passed
+            to filter().</p>
+
+        <h3>getAvailableItems() with Method Reference</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">BookableItem</span>&gt; <span class="method">getAvailableItems</span>() {
+    <span class="keyword">return</span> items.<span class="method">stream</span>()
+            .<span class="method">filter</span>(<span class="type">BookableItem</span>::isAvailable)  <span class="comment">// Method reference</span>
+            .<span class="method">collect</span>(<span class="type">Collectors</span>.<span class="method">toList</span>());
+}</code></pre>
+        <p><code>BookableItem::isAvailable</code> is a method reference - shorthand for
+            <code>item -> item.isAvailable()</code>
+        </p>
+
+        <h3>Sorting with Stream</h3>
+        <pre><code>users.<span class="method">stream</span>()
+    .<span class="method">sorted</span>((u1, u2) -> <span class="type">Integer</span>.<span class="method">compare</span>(u2.<span class="method">getLoyaltyPoints</span>(), u1.<span class="method">getLoyaltyPoints</span>()))
+    .<span class="method">forEach</span>(user -> System.out.<span class="method">println</span>(user.<span class="method">getFullName</span>()));</code></pre>
+        <p>Sorts users by loyalty points in descending order.</p>
+
+        <h2>📐 UML - Singleton Pattern</h2>
+        <pre style="background: var(--darker); text-align: center; font-size: 0.85rem;">
+┌──────────────────────────────────┐
+│        BookingSystem             │
+│         «Singleton»              │
+├──────────────────────────────────┤
+│ - static instance: BookingSystem │
+│ - items: List&lt;BookableItem&gt;      │
+│ - users: List&lt;User&gt;              │
+├──────────────────────────────────┤
+│ - BookingSystem()  ← PRIVATE     │
+│ + static getInstance(): BS       │
+│ + findUserById(): User           │
+│ + getAvailableItems(): List      │
+└──────────────────────────────────┘
+                ▲
+                │ Only ONE instance
+                │ accessible via getInstance()
+        </pre>
+
+        <footer>
+            <a href="07_ItemFactory.html">← Previous</a> | <a href="index.html">Index</a> | <a
+                href="09_BookingAppSwing.html">Next →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

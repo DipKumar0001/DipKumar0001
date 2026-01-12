@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookingAppFX.java - Event-Driven Programming & JavaFX GUI</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .pattern-box {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .pattern-box h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+
+        .annotation {
+            color: #61afef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>🖼️ BookingAppFX.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/BookingAppFX.java</code> | Lines: 1-594</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            The main GUI application using <strong>JavaFX</strong>. Demonstrates <strong>Event-Driven
+                Programming</strong>,
+            <strong>Lambda Expressions</strong>, and <strong>CSS-style inline styling</strong>.
+        </div>
+
+        <h2>🎯 Event-Driven Programming</h2>
+
+        <div class="pattern-box">
+            <h4>📘 What is Event-Driven Programming?</h4>
+            <p>A programming paradigm where the flow of execution is determined by events:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Events:</strong> User actions (clicks, key presses) or system events</li>
+                <li><strong>Event Listeners:</strong> Objects that respond to events</li>
+                <li><strong>Event Handlers:</strong> Methods called when events occur</li>
+            </ul>
+            <p style="margin-top: 10px;">The program waits for events rather than executing sequentially.</p>
+        </div>
+
+        <h2>📝 Key Code Sections</h2>
+
+        <h3>Class Declaration (Line 18)</h3>
+        <pre><code><span class="keyword">public class</span> <span class="type">BookingAppFX</span> <span class="keyword">extends</span> <span class="type">Application</span> {</code></pre>
+        <p><code>Application</code> is JavaFX's main application class. Extending it gives us the JavaFX lifecycle
+            methods and GUI framework.</p>
+
+        <div class="concept-box">
+            <h4>📘 JavaFX Application Lifecycle</h4>
+            <p>When a JavaFX application starts, the following methods are called in order:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li><code>init()</code> - Optional initialization before UI is created</li>
+                <li><code>start(Stage)</code> - <strong>Required!</strong> Create and show the UI</li>
+                <li><code>stop()</code> - Optional cleanup when application closes</li>
+            </ol>
+        </div>
+
+        <h3>Constants for UI Colors (Lines 21-28)</h3>
+        <pre><code><span class="keyword">private static final</span> <span class="type">String</span> PALETTE_CREAM = <span class="string">"#FFFAF0"</span>;
+<span class="keyword">private static final</span> <span class="type">String</span> PALETTE_DARK_MAROON = <span class="string">"#2D1B1B"</span>;
+<span class="keyword">private static final</span> <span class="type">String</span> PALETTE_GOLD = <span class="string">"#FFC107"</span>;
+<span class="keyword">private static final</span> <span class="type">String</span> PALETTE_CORAL = <span class="string">"#FF6B6B"</span>;</code></pre>
+        <p><code>static final</code> = constants shared by all instances and cannot be changed. In JavaFX, colors are
+            often specified as CSS hex strings.</p>
+
+        <h3>main() Method - Entry Point (Lines 46-48)</h3>
+        <pre><code><span class="keyword">public static void</span> <span class="method">main</span>(<span class="type">String</span>[] args) {
+    <span class="method">launch</span>(args);
+}</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Application.launch()</h4>
+            <p>The <code>launch()</code> method starts the JavaFX runtime. Unlike Swing, you don't need to manually
+                ensure thread safety - JavaFX handles this automatically through its <strong>Application
+                    Thread</strong>.</p>
+        </div>
+
+        <h3>start() Method - Building the UI (Lines 50-71)</h3>
+        <pre><code><span class="annotation">@Override</span>
+<span class="keyword">public void</span> <span class="method">start</span>(<span class="type">Stage</span> primaryStage) {
+    <span class="method">initializeData</span>();
+    
+    <span class="type">BorderPane</span> root = <span class="keyword">new</span> <span class="type">BorderPane</span>();
+    root.<span class="method">setStyle</span>(<span class="string">"-fx-background-color: "</span> + PALETTE_DARK_MAROON + <span class="string">";"</span>);
+    
+    root.<span class="method">setTop</span>(<span class="method">createHeader</span>());
+    root.<span class="method">setLeft</span>(<span class="method">createSidebar</span>());
+    root.<span class="method">setCenter</span>(<span class="method">createMainContent</span>());
+    root.<span class="method">setBottom</span>(<span class="method">createFooter</span>());
+    
+    <span class="type">Scene</span> scene = <span class="keyword">new</span> <span class="type">Scene</span>(root, 1100, 750);
+    primaryStage.<span class="method">setTitle</span>(<span class="string">"📚 Library Booking System - Sprint 3"</span>);
+    primaryStage.<span class="method">setScene</span>(scene);
+    primaryStage.<span class="method">show</span>();
+}</code></pre>
+
+        <div class="concept-box">
+            <h4>📘 Stage and Scene</h4>
+            <p><strong>Stage</strong> = The window (like JFrame in Swing)</p>
+            <p><strong>Scene</strong> = The content inside the window (contains all UI nodes)</p>
+            <p><strong>BorderPane</strong> = A layout container with TOP, BOTTOM, LEFT, RIGHT, CENTER regions</p>
+        </div>
+
+        <h2>🎛️ Event Listeners</h2>
+
+        <h3>Lambda Expression (Recommended)</h3>
+        <pre><code><span class="comment">// Button click with lambda</span>
+bookButton.<span class="method">setOnAction</span>(e -> <span class="method">handleBookItem</span>());</code></pre>
+        <p><code>e -> handleBookItem()</code> is a lambda that implements the <code>EventHandler</code> interface.</p>
+
+        <h3>Method Reference</h3>
+        <pre><code><span class="comment">// ComboBox selection change</span>
+userComboBox.<span class="method">setOnAction</span>(e -> <span class="method">updateUserInfo</span>());</code></pre>
+
+        <h3>Inline Lambda with Logic</h3>
+        <pre><code><span class="comment">// Mouse click on item row</span>
+infoLabel.<span class="method">setOnMouseClicked</span>(e -> {
+    selectedItem = item;
+    <span class="method">showItemDetails</span>(item);
+    <span class="method">logFeedback</span>(<span class="string">"📋 Selected: "</span> + item.<span class="method">getName</span>());
+    <span class="method">refreshItemList</span>();
+});</code></pre>
+
+        <h2>🎨 CSS-Style Inline Styling</h2>
+
+        <div class="concept-box">
+            <h4>📘 JavaFX CSS Styling</h4>
+            <p>JavaFX allows CSS-like styling using the <code>setStyle()</code> method or external CSS files.
+                The syntax uses <code>-fx-</code> prefixed property names:</p>
+        </div>
+
+        <pre><code><span class="comment">// Inline CSS styling for a button</span>
+<span class="type">String</span> baseStyle = <span class="string">"-fx-background-color: "</span> + bgColor + <span class="string">"; "</span> +
+    <span class="string">"-fx-text-fill: "</span> + PALETTE_CREAM + <span class="string">"; "</span> +
+    <span class="string">"-fx-font-weight: bold; "</span> +
+    <span class="string">"-fx-font-size: 14px; "</span> +
+    <span class="string">"-fx-cursor: hand;"</span>;
+button.<span class="method">setStyle</span>(baseStyle);</code></pre>
+
+        <h2>🧩 JavaFX Components Used</h2>
+        <table>
+            <tr>
+                <th>Component</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><code>Stage</code></td>
+                <td>Main window (equivalent to JFrame)</td>
+            </tr>
+            <tr>
+                <td><code>Scene</code></td>
+                <td>Container for all scene graph content</td>
+            </tr>
+            <tr>
+                <td><code>BorderPane</code></td>
+                <td>Layout with TOP, BOTTOM, LEFT, RIGHT, CENTER regions</td>
+            </tr>
+            <tr>
+                <td><code>VBox</code></td>
+                <td>Vertical box layout (stacks children vertically)</td>
+            </tr>
+            <tr>
+                <td><code>HBox</code></td>
+                <td>Horizontal box layout</td>
+            </tr>
+            <tr>
+                <td><code>Button</code></td>
+                <td>Clickable button</td>
+            </tr>
+            <tr>
+                <td><code>ComboBox</code></td>
+                <td>Dropdown selection</td>
+            </tr>
+            <tr>
+                <td><code>TextArea</code></td>
+                <td>Multi-line text display</td>
+            </tr>
+            <tr>
+                <td><code>CheckBox</code></td>
+                <td>Toggle option</td>
+            </tr>
+            <tr>
+                <td><code>ScrollPane</code></td>
+                <td>Scrollable container</td>
+            </tr>
+            <tr>
+                <td><code>Label</code></td>
+                <td>Text display</td>
+            </tr>
+        </table>
+
+        <h2>📐 Layout Containers</h2>
+        <pre><code><span class="comment">// BorderPane - divides window into 5 regions</span>
+<span class="type">BorderPane</span> root = <span class="keyword">new</span> <span class="type">BorderPane</span>();
+root.<span class="method">setTop</span>(header);
+root.<span class="method">setLeft</span>(sidebar);
+root.<span class="method">setCenter</span>(content);
+
+<span class="comment">// VBox - vertical stacking with spacing</span>
+<span class="type">VBox</span> sidebar = <span class="keyword">new</span> <span class="type">VBox</span>(10); <span class="comment">// 10px spacing</span>
+sidebar.<span class="method">setPadding</span>(<span class="keyword">new</span> <span class="type">Insets</span>(20, 15, 20, 15));</code></pre>
+
+        <h2>🔄 Stream Usage in GUI</h2>
+        <pre><code><span class="comment">// Filter items using streams</span>
+<span class="type">List</span>&lt;<span class="type">BookableItem</span>&gt; filteredItems = bookingSystem.<span class="method">getItems</span>().<span class="method">stream</span>()
+    .<span class="method">filter</span>(item -> {
+        <span class="keyword">if</span> (availableOnlyCheckBox.<span class="method">isSelected</span>() && !item.<span class="method">isAvailable</span>())
+            <span class="keyword">return false</span>;
+        <span class="keyword">if</span> (currentCategoryFilter != <span class="keyword">null</span> && !currentCategoryFilter.<span class="method">isInstance</span>(item))
+            <span class="keyword">return false</span>;
+        <span class="keyword">return true</span>;
+    })
+    .<span class="method">collect</span>(<span class="type">Collectors</span>.<span class="method">toList</span>());</code></pre>
+
+        <h2>🆚 JavaFX vs Swing Comparison</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Swing</th>
+                <th>JavaFX</th>
+            </tr>
+            <tr>
+                <td>Main Window</td>
+                <td><code>JFrame</code></td>
+                <td><code>Stage</code></td>
+            </tr>
+            <tr>
+                <td>Content Container</td>
+                <td><code>JPanel</code></td>
+                <td><code>Scene</code> + Layout Panes</td>
+            </tr>
+            <tr>
+                <td>Entry Point</td>
+                <td><code>SwingUtilities.invokeLater()</code></td>
+                <td><code>Application.launch()</code></td>
+            </tr>
+            <tr>
+                <td>Styling</td>
+                <td>Java code / UIManager</td>
+                <td>CSS-style properties</td>
+            </tr>
+            <tr>
+                <td>Event Handling</td>
+                <td><code>ActionListener</code></td>
+                <td><code>EventHandler</code> + Lambdas</td>
+            </tr>
+            <tr>
+                <td>Thread Safety</td>
+                <td>Manual (EDT)</td>
+                <td>Automatic (Application Thread)</td>
+            </tr>
+        </table>
+
+        <footer>
+            <a href="08_BookingSystem.html">← Previous</a> | <a href="index.html">Index</a> | <a
+                href="10_ClassDiagram_Wireframe.html">Next →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

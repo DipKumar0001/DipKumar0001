@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ItemFactory.java - Factory Method Pattern</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .pattern-box {
+            background: rgba(243, 156, 18, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .pattern-box h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .keyword {
+            color: #c678dd;
+        }
+
+        .type {
+            color: #e5c07b;
+        }
+
+        .string {
+            color: #98c379;
+        }
+
+        .method {
+            color: #61afef;
+        }
+
+        .comment {
+            color: #5c6370;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>🏭 ItemFactory.java</h1>
+        <p style="color: #888; margin-bottom: 20px;">Location: <code>/src/ItemFactory.java</code> | Lines: 1-45</p>
+
+        <div class="intro">
+            <strong>What is this class?</strong><br>
+            <code>ItemFactory</code> implements the <strong>Factory Method Design Pattern</strong> - a creational
+            pattern that encapsulates object creation logic.
+        </div>
+
+        <h2>🎯 Design Pattern: Factory Method</h2>
+
+        <div class="pattern-box">
+            <h4>📘 Factory Method Pattern</h4>
+            <p><strong>Category:</strong> Creational Design Pattern</p>
+            <p><strong>Intent:</strong> Define an interface for creating an object, but let subclasses or factory
+                methods decide which class to instantiate.</p>
+            <p style="margin-top: 10px;"><strong>Benefits:</strong></p>
+            <ul style="margin-left: 20px;">
+                <li>Encapsulates object creation in one place</li>
+                <li>Client code doesn't need to know concrete classes</li>
+                <li>Easy to add new product types</li>
+                <li>Promotes loose coupling</li>
+            </ul>
+        </div>
+
+        <h2>📝 Factory Methods</h2>
+
+        <h3>createBook() Method</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">Book</span> <span class="method">createBook</span>(<span class="type">String</span> itemId, <span class="type">String</span> name, <span class="type">String</span> author, <span class="type">String</span> isbn) {
+    <span class="keyword">return new</span> <span class="type">Book</span>(itemId, name, author, isbn);
+}</code></pre>
+
+        <h3>createVehicle() Method</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">Vehicle</span> <span class="method">createVehicle</span>(<span class="type">String</span> itemId, <span class="type">String</span> name, <span class="type">String</span> make, <span class="type">String</span> model, <span class="type">String</span> licensePlate) {
+    <span class="keyword">return new</span> <span class="type">Vehicle</span>(itemId, name, make, model, licensePlate);
+}</code></pre>
+
+        <h3>createHobbyKit() Method</h3>
+        <pre><code><span class="keyword">public</span> <span class="type">HobbyKit</span> <span class="method">createHobbyKit</span>(<span class="type">String</span> itemId, <span class="type">String</span> name) {
+    <span class="keyword">return new</span> <span class="type">HobbyKit</span>(itemId, name);
+}</code></pre>
+
+        <h2>📊 Usage Comparison</h2>
+
+        <h3>Without Factory (Direct Instantiation)</h3>
+        <pre><code><span class="comment">// Client code KNOWS and DEPENDS on concrete classes</span>
+<span class="type">Book</span> book = <span class="keyword">new</span> <span class="type">Book</span>(<span class="string">"B001"</span>, <span class="string">"Alchemist"</span>, <span class="string">"Paulo"</span>, <span class="string">"978..."</span>);
+<span class="type">Vehicle</span> car = <span class="keyword">new</span> <span class="type">Vehicle</span>(<span class="string">"V001"</span>, <span class="string">"Honda"</span>, <span class="string">"Honda"</span>, <span class="string">"Civic"</span>, <span class="string">"AB12"</span>);</code></pre>
+
+        <h3>With Factory (Encapsulated Creation)</h3>
+        <pre><code><span class="comment">// Client code uses factory - creation logic is centralized</span>
+<span class="type">ItemFactory</span> factory = <span class="keyword">new</span> <span class="type">ItemFactory</span>();
+<span class="type">Book</span> book = factory.<span class="method">createBook</span>(<span class="string">"B001"</span>, <span class="string">"Alchemist"</span>, <span class="string">"Paulo"</span>, <span class="string">"978..."</span>);
+<span class="type">Vehicle</span> car = factory.<span class="method">createVehicle</span>(<span class="string">"V001"</span>, <span class="string">"Honda"</span>, <span class="string">"Honda"</span>, <span class="string">"Civic"</span>, <span class="string">"AB12"</span>);</code></pre>
+
+        <h2>📐 UML Diagram</h2>
+        <pre style="background: var(--darker); text-align: center; font-size: 0.85rem;">
+        ┌─────────────────────────┐
+        │      ItemFactory        │
+        │      «Factory»          │
+        ├─────────────────────────┤
+        │ + createBook(): Book    │
+        │ + createVehicle(): Veh. │
+        │ + createHobbyKit(): HK  │
+        └───────────┬─────────────┘
+                    │ creates
+        ┌───────────┼───────────┐
+        ▼           ▼           ▼
+   ┌────────┐  ┌─────────┐  ┌──────────┐
+   │  Book  │  │ Vehicle │  │ HobbyKit │
+   └────────┘  └─────────┘  └──────────┘
+        </pre>
+
+        <div class="concept-box">
+            <h4>📘 When to Use Factory Pattern</h4>
+            <ul style="margin-left: 20px;">
+                <li>When you have a family of related classes</li>
+                <li>When creation logic is complex or needs validation</li>
+                <li>When you want to centralize object creation</li>
+                <li>When you want to hide concrete implementations</li>
+            </ul>
+        </div>
+
+        <footer>
+            <a href="06_User.html">← Previous</a> | <a href="index.html">Index</a> | <a
+                href="08_BookingSystem.html">Next →</a>
+        </footer>
+    </div>
+</body>
+
+</html>

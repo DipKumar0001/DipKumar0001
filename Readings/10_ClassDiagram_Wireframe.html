@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Diagrams & Wireframes - UML Explained</title>
+    <style>
+        :root {
+            --primary: #4a90d9;
+            --secondary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --text: #e0e0e0;
+            --accent: #f39c12;
+            --code-bg: #0d0d1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 25px 0 10px;
+        }
+
+        .intro {
+            background: rgba(74, 144, 217, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-box {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .concept-box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #333;
+            font-size: 0.85rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: var(--darker);
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav"><a href="index.html">← Back to Index</a></nav>
+
+        <h1>📐 Class Diagrams & Wireframes</h1>
+        <p style="color: #888; margin-bottom: 20px;">UML Documentation for the Booking System</p>
+
+        <div class="intro">
+            <strong>What is UML?</strong><br>
+            <strong>Unified Modeling Language (UML)</strong> is a standardized way to visualize the design of a software
+            system. Class diagrams show the structure of classes and their relationships.
+        </div>
+
+        <h2>📊 Class Diagram Components</h2>
+
+        <h3>Class Notation</h3>
+        <pre>
+┌─────────────────────────┐
+│     ClassName           │  ← Class Name
+├─────────────────────────┤
+│ - privateField: Type    │  ← Attributes (fields)
+│ + publicField: Type     │
+├─────────────────────────┤
+│ + publicMethod(): void  │  ← Methods
+│ - privateMethod(): int  │
+└─────────────────────────┘
+        </pre>
+
+        <div class="concept-box">
+            <h4>📘 Visibility Symbols</h4>
+            <table>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Visibility</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><code>+</code></td>
+                    <td>public</td>
+                    <td>Accessible from anywhere</td>
+                </tr>
+                <tr>
+                    <td><code>-</code></td>
+                    <td>private</td>
+                    <td>Only within the class</td>
+                </tr>
+                <tr>
+                    <td><code>#</code></td>
+                    <td>protected</td>
+                    <td>Class and subclasses</td>
+                </tr>
+                <tr>
+                    <td><code>~</code></td>
+                    <td>package</td>
+                    <td>Within same package</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>🔗 Relationship Types</h2>
+
+        <table>
+            <tr>
+                <th>Relationship</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><strong>Inheritance</strong></td>
+                <td>─▷</td>
+                <td>IS-A relationship (extends)</td>
+                <td>Book ─▷ BookableItem</td>
+            </tr>
+            <tr>
+                <td><strong>Composition</strong></td>
+                <td>◆──</td>
+                <td>Strong HAS-A (part dies with whole)</td>
+                <td>HobbyKit ◆── Equipment</td>
+            </tr>
+            <tr>
+                <td><strong>Aggregation</strong></td>
+                <td>◇──</td>
+                <td>Weak HAS-A (parts exist independently)</td>
+                <td>BookingSystem ◇── Items</td>
+            </tr>
+            <tr>
+                <td><strong>Association</strong></td>
+                <td>───</td>
+                <td>Uses/knows about</td>
+                <td>BookableItem ─── User</td>
+            </tr>
+            <tr>
+                <td><strong>Dependency</strong></td>
+                <td>--></td>
+                <td>Creates or uses temporarily</td>
+                <td>Factory --> Book</td>
+            </tr>
+        </table>
+
+        <h2>📊 System Class Diagram</h2>
+        <pre>
+                          ┌─────────────────────────┐
+                          │    «interface/abstract» │
+                          │      BookableItem       │
+                          ├─────────────────────────┤
+                          │ - itemId: String        │
+                          │ - name: String          │
+                          │ - isAvailable: boolean  │
+                          │ - currentHolder: User   │
+                          ├─────────────────────────┤
+                          │ + bookItem(User): bool  │
+                          │ + returnItem(): void    │
+                          │ + printDetails()*: void │  ← abstract
+                          └───────────┬─────────────┘
+                ┌─────────────────────┼─────────────────────┐
+                │                     │                     │
+                ▼                     ▼                     ▼
+        ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+        │    Book     │       │   Vehicle   │       │  HobbyKit   │
+        ├─────────────┤       ├─────────────┤       ├─────────────┤
+        │ - author    │       │ - make      │       │ - equipment │◆─┐
+        │ - isbn      │       │ - model     │       │   List      │  │
+        ├─────────────┤       ├─────────────┤       ├─────────────┤  │
+        │+printDetails│       │+canBeBooked │       │+addEquipment│  │
+        └─────────────┘       └─────────────┘       └─────────────┘  │
+                                                                      │
+                ┌─────────────────────────────────────────────────────┘
+                ▼
+        ┌─────────────┐
+        │  Equipment  │
+        ├─────────────┤
+        │ - name      │
+        │ - desc      │
+        └─────────────┘
+        </pre>
+
+        <h2>🏗️ Design Patterns in Diagram</h2>
+
+        <h3>Singleton Pattern (BookingSystem)</h3>
+        <pre>
+┌─────────────────────────────────┐
+│        BookingSystem            │
+│         «Singleton»             │
+├─────────────────────────────────┤
+│ - static instance: BookingSystem│
+├─────────────────────────────────┤
+│ - BookingSystem()  [private]    │
+│ + static getInstance(): BS      │
+└─────────────────────────────────┘
+        </pre>
+
+        <h3>Factory Pattern (ItemFactory)</h3>
+        <pre>
+                  ┌─────────────────┐
+                  │   ItemFactory   │
+                  │    «Factory»    │
+                  ├─────────────────┤
+                  │ + createBook()  │
+                  │ + createVehicle │
+                  │ + createHobbyKit│
+                  └───────┬─────────┘
+                          │ creates
+          ┌───────────────┼───────────────┐
+          ▼               ▼               ▼
+      ┌──────┐       ┌─────────┐    ┌──────────┐
+      │ Book │       │ Vehicle │    │ HobbyKit │
+      └──────┘       └─────────┘    └──────────┘
+        </pre>
+
+        <h2>🖼️ GUI Wireframe Explained</h2>
+
+        <div class="concept-box">
+            <h4>📘 What is a Wireframe?</h4>
+            <p>A wireframe is a low-fidelity visual guide representing the skeletal framework of a user interface. It
+                shows:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Layout and positioning of elements</li>
+                <li>Content hierarchy</li>
+                <li>User interaction flow</li>
+                <li>Component relationships</li>
+            </ul>
+        </div>
+
+        <h3>Wireframe Layout Structure</h3>
+        <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                      HEADER (Title Bar)                      │
+├────────────────┬────────────────────────────────────────────┤
+│                │                                             │
+│    SIDEBAR     │              MAIN CONTENT                   │
+│                │                                             │
+│  - User Panel  │  - Item List (JList)                        │
+│  - Filters     │  - Item Details (JTextArea)                 │
+│  - Actions     │                                             │
+│    (Buttons)   │                                             │
+│                │                                             │
+├────────────────┴────────────────────────────────────────────┤
+│                      FOOTER (Feedback Area)                  │
+└─────────────────────────────────────────────────────────────┘
+        </pre>
+
+        <h3>Component Mapping to JavaFX</h3>
+        <table>
+            <tr>
+                <th>Wireframe Section</th>
+                <th>JavaFX Component</th>
+                <th>Layout</th>
+            </tr>
+            <tr>
+                <td>Header</td>
+                <td>HBox</td>
+                <td>BorderPane.TOP</td>
+            </tr>
+            <tr>
+                <td>Sidebar</td>
+                <td>VBox</td>
+                <td>BorderPane.LEFT</td>
+            </tr>
+            <tr>
+                <td>Main Content</td>
+                <td>VBox with ScrollPane + TextArea</td>
+                <td>BorderPane.CENTER</td>
+            </tr>
+            <tr>
+                <td>Footer</td>
+                <td>VBox with TextArea</td>
+                <td>BorderPane.BOTTOM</td>
+            </tr>
+        </table>
+
+        <h2>📑 Summary of Relationships</h2>
+        <table>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Type</th>
+                <th>Keyword</th>
+            </tr>
+            <tr>
+                <td>Book/Vehicle/HobbyKit</td>
+                <td>BookableItem</td>
+                <td>Inheritance</td>
+                <td>extends</td>
+            </tr>
+            <tr>
+                <td>HobbyKit</td>
+                <td>Equipment</td>
+                <td>Composition</td>
+                <td>List field</td>
+            </tr>
+            <tr>
+                <td>BookingSystem</td>
+                <td>BookableItem</td>
+                <td>Aggregation</td>
+                <td>List field</td>
+            </tr>
+            <tr>
+                <td>BookableItem</td>
+                <td>User</td>
+                <td>Association</td>
+                <td>currentHolder</td>
+            </tr>
+            <tr>
+                <td>ItemFactory</td>
+                <td>Book/Vehicle/HK</td>
+                <td>Dependency</td>
+                <td>creates</td>
+            </tr>
+        </table>
+
+        <footer>
+            <a href="09_BookingAppFX.html">← Previous</a> | <a href="index.html">Index</a>
+        </footer>
+    </div>
+</body>
+
+</html>
